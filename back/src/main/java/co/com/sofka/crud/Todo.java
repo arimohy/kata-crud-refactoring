@@ -3,12 +3,14 @@ package co.com.sofka.crud;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Todo {
     @Id
     @GeneratedValue
     private Long id;
+    @NotEmpty(message = "El campo no puede estar vacio")
     private String name;
     private boolean completed;
     private String groupListId;

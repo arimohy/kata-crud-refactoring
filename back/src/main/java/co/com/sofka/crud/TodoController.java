@@ -3,6 +3,8 @@ package co.com.sofka.crud;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 public class TodoController {
@@ -38,4 +40,12 @@ public class TodoController {
         return service.get(id);
     }
 
+    @GetMapping(value="api/todos/{grouplistid}")
+    public Iterable<Todo> getlist(@PathVariable("grouplistid") String grouplistid){
+        return service.listporlist(grouplistid);
+    }
+    @DeleteMapping(value = "api/groups/{grouplistid}")
+    public void  deletegroup(@PathVariable ("grouplistid") String grouplistid){
+        service.deleteGrouplistid(grouplistid);
+    }
 }
