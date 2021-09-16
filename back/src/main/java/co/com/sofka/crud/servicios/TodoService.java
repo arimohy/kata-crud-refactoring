@@ -28,10 +28,10 @@ public class TodoService {
          return repository.findById(id).orElseThrow();
     }
 
-    public Iterable<Todo> listporlist(String grouplistid){
+    /*public Iterable<Todo> listporlist(String grouplistid){
         return repository.findByGroupListId(grouplistid);
     }
     public void deleteGrouplistid(String grouplistid){
         repository.deleteGroupListId(grouplistid);
-    }
+    }*/
 }

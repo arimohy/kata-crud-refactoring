@@ -1,27 +1,21 @@
 package co.com.sofka.crud.entidades;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.validation.constraints.NotEmpty;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Todo {
     @Id
     @GeneratedValue
     private Long id;
-    @NotEmpty(message = "El campo no puede estar vacio")
+
+    @NotBlank(message = "El campo no puede estar vacio")
     private String name;
     private boolean completed;
-    private String groupListId;
 
-    public String getGroupListId() {
-        return groupListId;
-    }
 
-    public void setGroupListId(String groupListId) {
-        this.groupListId = groupListId;
-    }
+    private Long list;
+
 
     public Long getId() {
         return id;
@@ -45,5 +39,13 @@ public class Todo {
 
     public void setCompleted(boolean completed) {
         this.completed = completed;
+    }
+
+    public Long getList() {
+        return list;
+    }
+
+    public void setList(Long list) {
+        this.list = list;
     }
 }

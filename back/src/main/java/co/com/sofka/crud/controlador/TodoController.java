@@ -40,12 +40,12 @@ public class TodoController {
         return service.get(id);
     }
 
-    @GetMapping(value="api/todos/{grouplistid}")
-    public Iterable<Todo> getlist(@PathVariable("grouplistid") String grouplistid){
-        return service.listporlist(grouplistid);
-    }
-    @DeleteMapping(value = "api/groups/{grouplistid}")
-    public void  deletegroup(@PathVariable ("grouplistid") String grouplistid){
-        service.deleteGrouplistid(grouplistid);
-    }
+//    @GetMapping(value="api/todos/{grouplistid}")
+//    public Iterable<Todo> getlist(@PathVariable("grouplistid") String grouplistid){
+//        return service.listporlist(grouplistid);
+//    }
+//    @DeleteMapping(value = "api/groups/{grouplistid}")
+//    public void  deletegroup(@PathVariable ("grouplistid") String grouplistid){
+//        service.deleteGrouplistid(grouplistid);
+//    }
 }
