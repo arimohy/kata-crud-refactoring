@@ -1,12 +1,9 @@
-package co.com.sofka.crud;
+package co.com.sofka.crud.servicios;
 
+import co.com.sofka.crud.entidades.Todo;
+import co.com.sofka.crud.repositorio.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class TodoService {

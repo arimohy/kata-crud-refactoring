@@ -1,9 +1,9 @@
-package co.com.sofka.crud;
+package co.com.sofka.crud.controlador;
 
+import co.com.sofka.crud.entidades.Todo;
+import co.com.sofka.crud.servicios.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")

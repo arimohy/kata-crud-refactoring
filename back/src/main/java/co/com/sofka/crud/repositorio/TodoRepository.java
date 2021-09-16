@@ -1,5 +1,6 @@
-package co.com.sofka.crud;
+package co.com.sofka.crud.repositorio;
 
+import co.com.sofka.crud.entidades.Todo;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
