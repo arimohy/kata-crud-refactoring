@@ -30,7 +30,7 @@ public class ListTodoController {
         if(listTodo.getId() != null){
             return service.save(listTodo);
         }
-        throw new RuntimeException("No existe el id para actualziar");
+        throw new RuntimeException("No existe el id para actualizar");
     }
 
     @DeleteMapping(value = "api/{id}/list")

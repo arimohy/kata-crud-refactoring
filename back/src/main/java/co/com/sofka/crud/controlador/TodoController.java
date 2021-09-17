@@ -1,6 +1,7 @@
 package co.com.sofka.crud.controlador;
 
 import co.com.sofka.crud.entidades.Todo;
+import co.com.sofka.crud.entidades.dtos.DTOentidadTodo;
 import co.com.sofka.crud.servicios.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,7 @@ public class TodoController {
     private TodoService service;
 
     @GetMapping(value = "api/todos")
-    public Iterable<Todo> list(){
+    public Iterable<DTOentidadTodo> list(){
         return service.list();
     }
     

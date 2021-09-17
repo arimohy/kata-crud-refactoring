@@ -1,9 +1,19 @@
 package co.com.sofka.crud.servicios;
 
+import co.com.sofka.crud.entidades.ListTodo;
 import co.com.sofka.crud.entidades.Todo;
+import co.com.sofka.crud.entidades.dtos.DTOentidadListTodo;
+import co.com.sofka.crud.entidades.dtos.DTOentidadTodo;
+import co.com.sofka.crud.entidades.dtos.ListTodoDto;
+import co.com.sofka.crud.entidades.dtos.TodoDto;
 import co.com.sofka.crud.repositorio.TodoRepository;
+import co.com.sofka.crud.util.DtoUtilsListTodo;
+import co.com.sofka.crud.util.DtoUtilsTodo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TodoService {
@@ -12,8 +22,13 @@ public class TodoService {
     private TodoRepository repository;
 
 
-    public Iterable<Todo> list(){
-        return repository.findAll();
+//    public Iterable<Todo> list(){
+//        return repository.findAll();
+//    }
+    public Iterable<DTOentidadTodo> list(){
+        return ((List<Todo>) repository.findAll()).stream().map(obj -> new DtoUtilsTodo().convertToDto(obj, new TodoDto()))
+                .collect(Collectors.toList());
+    
     }
 
     public Todo save(Todo todo){
