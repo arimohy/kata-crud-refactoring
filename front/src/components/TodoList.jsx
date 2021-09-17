@@ -6,7 +6,7 @@ const HOST_API = "http://localhost:8080/api";
 
 const TodoList =({ el }) => {
     const { name, list } = el
-    
+
     const {
       dispatch,
       state: { todo },
@@ -61,7 +61,9 @@ const TodoList =({ el }) => {
       <fieldset>
         <legend>
 					{name}
-					<button>Eliminar</button>
+					<button
+                    
+                    >Eliminar</button>
 				</legend>
 				<TodoForm/>
         <table>
