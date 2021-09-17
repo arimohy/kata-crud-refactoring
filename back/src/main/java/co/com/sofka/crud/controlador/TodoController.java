@@ -2,6 +2,7 @@ package co.com.sofka.crud.controlador;
 
 import co.com.sofka.crud.entidades.Todo;
 import co.com.sofka.crud.entidades.dtos.DTOentidadTodo;
+import co.com.sofka.crud.entidades.dtos.TodoDto;
 import co.com.sofka.crud.servicios.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,12 +20,12 @@ public class TodoController {
     }
     
     @PostMapping(value = "api/todo")
-    public Todo save(@RequestBody Todo todo){
+    public DTOentidadTodo save(@RequestBody DTOentidadTodo todo){
         return service.save(todo);
     }
 
     @PutMapping(value = "api/todo")
-    public Todo update(@RequestBody Todo todo){
+    public DTOentidadTodo update(@RequestBody TodoDto todo){
         if(todo.getId() != null){
             return service.save(todo);
         }

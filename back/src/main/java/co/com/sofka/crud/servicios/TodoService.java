@@ -31,8 +31,12 @@ public class TodoService {
     
     }
 
-    public Todo save(Todo todo){
-        return repository.save(todo);
+//    public Todo save(Todo todo){
+//        return repository.save(todo);
+//    }
+    public  DTOentidadTodo save(DTOentidadTodo dtoentidadTodo){
+        Todo lt=(Todo) new DtoUtilsTodo().convertToEntity(new Todo(),dtoentidadTodo);
+        return new DtoUtilsTodo().convertToDto(repository.save(lt),new TodoDto());
     }
 
     public void delete(Long id){
