@@ -20,7 +20,7 @@ public class TodoController {
     }
     
     @PostMapping(value = "api/todo")
-    public DTOentidadTodo save(@RequestBody DTOentidadTodo todo){
+    public DTOentidadTodo save(@RequestBody TodoDto todo){
         return service.save(todo);
     }
 
@@ -38,7 +38,7 @@ public class TodoController {
     }
 
     @GetMapping(value = "api/{id}/todo")
-    public Todo get(@PathVariable("id") Long id){
+    public DTOentidadTodo get(@PathVariable("id") Long id){
         return service.get(id);
     }
 

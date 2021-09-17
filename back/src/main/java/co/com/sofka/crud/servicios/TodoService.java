@@ -39,12 +39,19 @@ public class TodoService {
         return new DtoUtilsTodo().convertToDto(repository.save(lt),new TodoDto());
     }
 
-    public void delete(Long id){
-        repository.delete(get(id));
+//    public void delete(Long id){
+//        repository.delete(get(id));
+//    }
+    public  void  delete(Long id){
+        Todo lt=(Todo) new DtoUtilsTodo().convertToEntity(new Todo(), get(id));
+        repository.delete(lt);
     }
 
-    public Todo get(Long id){
-         return repository.findById(id).orElseThrow();
+//    public Todo get(Long id){
+//         return repository.findById(id).orElseThrow();
+//    }
+    public DTOentidadTodo get(Long id){
+        return repository.findById(id).map(obj -> new DtoUtilsTodo().convertToDto(obj, new TodoDto())).orElseThrow();
     }
 
     /*public Iterable<Todo> listporlist(String grouplistid){
