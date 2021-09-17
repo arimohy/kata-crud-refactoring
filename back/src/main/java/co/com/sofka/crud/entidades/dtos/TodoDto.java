@@ -1,21 +1,18 @@
-package co.com.sofka.crud.entidades;
+package co.com.sofka.crud.entidades.dtos;
 
-import javax.persistence.*;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 
-@Entity
-public class Todo {
-    @Id
-    @GeneratedValue
-    private Long id;
+public class TodoDto implements DTOentidadTodo {
 
-    @NotBlank(message = "El campo no puede estar vacio")
+    private Long id;
     private String name;
     private boolean completed;
-
-    @JoinColumn(nullable = false)
     private Long list;
 
+    public TodoDto() {
+    }
 
     public Long getId() {
         return id;

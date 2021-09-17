@@ -2,6 +2,8 @@ package co.com.sofka.crud.controlador;
 
 import co.com.sofka.crud.entidades.ListTodo;
 import co.com.sofka.crud.entidades.Todo;
+import co.com.sofka.crud.entidades.dtos.DTOentidadListTodo;
+import co.com.sofka.crud.entidades.dtos.ListTodoDto;
 import co.com.sofka.crud.servicios.ListTodoService;
 import co.com.sofka.crud.servicios.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,17 +16,17 @@ public class ListTodoController {
     private ListTodoService service;
 
     @GetMapping(value = "api/lists")
-    public Iterable<ListTodo> list(){
+    public Iterable<DTOentidadListTodo> list(){
         return service.list();
     }
 
     @PostMapping(value = "api/list")
-    public ListTodo save(@RequestBody ListTodo listTodo){
+    public DTOentidadListTodo save(@RequestBody ListTodoDto listTodo){
         return service.save(listTodo);
     }
 
     @PutMapping(value = "api/list")
-    public ListTodo update(@RequestBody ListTodo listTodo){
+    public DTOentidadListTodo update(@RequestBody ListTodoDto listTodo){
         if(listTodo.getId() != null){
             return service.save(listTodo);
         }
@@ -37,7 +39,7 @@ public class ListTodoController {
     }
 
     @GetMapping(value = "api/{id}/list")
-    public ListTodo get(@PathVariable("id") Long id){
+    public DTOentidadListTodo get(@PathVariable("id") Long id){
         return service.get(id);
     }
 
