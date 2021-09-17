@@ -9,7 +9,7 @@ public class TodoDto implements DTOentidadTodo {
     private Long id;
     private String name;
     private boolean completed;
-    private Long list;
+    private Long listtodo;
 
     public TodoDto() {
     }
@@ -38,11 +38,11 @@ public class TodoDto implements DTOentidadTodo {
         this.completed = completed;
     }
 
-    public Long getList() {
-        return list;
+    public Long getListtodo() {
+        return listtodo;
     }
 
-    public void setList(Long list) {
-        this.list = list;
+    public void setListtodo(Long listtodo) {
+        this.listtodo = listtodo;
     }
 }

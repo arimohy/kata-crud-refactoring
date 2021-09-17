@@ -14,7 +14,7 @@ public class Todo {
     private boolean completed;
 
     @JoinColumn(nullable = false)
-    private Long list;
+    private Long listtodo;
 
 
     public Long getId() {
@@ -41,11 +41,11 @@ public class Todo {
         this.completed = completed;
     }
 
-    public Long getList() {
-        return list;
+    public Long getListtodo() {
+        return listtodo;
     }
 
-    public void setList(Long list) {
-        this.list = list;
+    public void setListtodo(Long listtodo) {
+        this.listtodo = listtodo;
     }
 }

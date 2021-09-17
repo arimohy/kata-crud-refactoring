@@ -11,7 +11,7 @@ import java.util.Set;
 public class ListTodoDto implements DTOentidadListTodo{
     private Long id;
     private String name;
-    private Set<Todo> List;
+    private Set<Todo> Listtodo;
 
     public ListTodoDto() {
     }
@@ -32,11 +32,11 @@ public class ListTodoDto implements DTOentidadListTodo{
         this.name = name;
     }
 
-    public Set<Todo> getList() {
-        return List;
+    public Set<Todo> getListtodo() {
+        return Listtodo;
     }
 
-    public void setList(Set<Todo> list) {
-        List = list;
+    public void setListtodo(Set<Todo> listtodo) {
+        Listtodo = listtodo;
     }
 }

@@ -10,9 +10,8 @@ public class ListTodo {
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "list")
-    private Set<Todo> List;
-
+    @JoinColumn(name = "listtodo")
+    private Set<Todo> Listtodo;
 
     public Long getId() {
         return id;
@@ -30,11 +29,11 @@ public class ListTodo {
         this.name = name;
     }
 
-    public Set<Todo> getList() {
-        return List;
+    public Set<Todo> getListtodo() {
+        return Listtodo;
     }
 
-    public void setList(Set<Todo> list) {
-        List = list;
+    public void setListtodo(Set<Todo> listtodo) {
+        Listtodo = listtodo;
     }
 }
