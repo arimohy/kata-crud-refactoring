@@ -4,14 +4,19 @@ import TodoForm from './TodoForm';
 const HOST_API = "http://localhost:8080/api";
 
 
-const TodoList =({ el }) => {
-    const { name, list } = el
+const TodoList =({ el,db,setDb}) => {
+    const { id,name, listtodo } = el
 
     const {
       dispatch,
       state: { todo },
     } = useContext(Store)
-    const currentList = todo.list
+    const currentList =todo.list.filter((e)=>e.listtodo===el.id)
+    //todo.list
+    
+    console.log("todo",todo)
+    console.log("list",listtodo)
+    console.log("el",el)
 
     useEffect(() => {
       fetch(HOST_API + '/todos')
@@ -38,6 +43,8 @@ const TodoList =({ el }) => {
         name: todo.name,
         id: todo.id,
         completed: event.target.checked,
+        listtodo:id
+
       }
       fetch(HOST_API + '/todo', {
         method: 'PUT',
@@ -56,16 +63,26 @@ const TodoList =({ el }) => {
     const decorationDone = {
       textDecoration: 'line-through'
     };
+
+    async function deleteData(idData) {
+        const response = await fetch(HOST_API +'/'+idData+ '/list/', {
+            method: 'DELETE',
+            headers: {'Content-Type': 'application/json'},
+        });
+        const dbFiltered=db.filter((el)=>el.id!==idData)
+        setDb(dbFiltered)
+        
+    }
     return (
         <div>
       <fieldset>
         <legend>
 					{name}
 					<button
-                    
+                    onClick={()=>deleteData(id)}
                     >Eliminar</button>
 				</legend>
-				<TodoForm/>
+				<TodoForm idlist={id} el={el}/>
         <table>
           <thead>
             <tr>

@@ -28,22 +28,29 @@ const Todo = () => {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(data) 
         });
-        return response.json();
+        const newData= await response.json()
+        setDb([...db,newData])
+        console.log(newData)
     }
 
     const [nombrelista, setNombrelista] = useState("")
 
     return (
         <div>
-            <form action="">
+            <form>
 				<input type="text"
                 onChange={(event) => {
                     setNombrelista(event.target.value)
                     }} 
                 />
-				<button onClick={()=>postData({"name":nombrelista})}>Nueva Lista</button>
+				<button onClick={(e)=>{
+                    e.preventDefault()
+                    postData({"name":nombrelista})
+                    //setDb(...db,nombrelista)
+                    }
+                    }>Nueva Lista</button>
 			</form>
-            {db && db.map((el) => <StoreProvider> <TodoList key={el.id} el={el} /></StoreProvider>)}
+            {db && db.map((el) => <StoreProvider> <TodoList key={el.id} el={el} setDb={setDb} db={db} /></StoreProvider>)}
     </div>
     )
 }

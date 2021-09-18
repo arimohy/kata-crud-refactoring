@@ -3,7 +3,7 @@ import Store from './StoreProvider';
 
 const HOST_API = "http://localhost:8080/api";
 
-const TodoForm = () => {
+const TodoForm = ({idlist}) => {
     const formRef = useRef(null);
     const { dispatch, state: { todo } } = useContext(Store);
     const item = todo.item;
@@ -14,25 +14,24 @@ const TodoForm = () => {
         const request = {
         name: state.name,
         id: null,
-        completed: false
-        //nombre de lista
-        //list:no se
-    };
+        completed: false,
+        listtodo:idlist
+        };
     
     
-    fetch(HOST_API + "/todo", {
-        method: "POST",
-        body: JSON.stringify(request),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => response.json())
-    .then((todo) => {
-        dispatch({ type: "add-item", item: todo });
-        setState({ name: "" });
-        formRef.current.reset();
-    });
+        fetch(HOST_API + "/todo", {
+            method: "POST",
+            body: JSON.stringify(request),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(response => response.json())
+        .then((todo) => {
+            dispatch({ type: "add-item", item: todo });
+            setState({ name: "" });
+            formRef.current.reset();
+        });
     }
     
     const onEdit = (event) => {
@@ -41,7 +40,8 @@ const TodoForm = () => {
         const request = {
         name: state.name,
         id: item.id,
-        isCompleted: item.isCompleted
+        isCompleted: item.isCompleted,
+        listtodo:idlist
     };
     
     
@@ -61,6 +61,7 @@ const TodoForm = () => {
         });
     }
 
+    
     return <form ref={formRef}>
       <input
         type="text"
