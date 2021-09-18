@@ -75,9 +75,9 @@ const TodoList =({ el,db,setDb}) => {
     }
     return (
         <div>
-      <fieldset>
-        <legend>
-					{name}
+        <fieldset className="made-up">
+        <legend >
+                    <label>{name}</label>
 					<button
                     onClick={()=>deleteData(id)}
                     >Eliminar</button>

@@ -1,6 +1,7 @@
 import React,{ useState ,useEffect} from 'react'
 import { StoreProvider } from './StoreProvider'
 import TodoList from './TodoList'
+import { useForm } from "react-hook-form";
 const HOST_API = "http://localhost:8080/api";
 
 
@@ -8,7 +9,7 @@ const HOST_API = "http://localhost:8080/api";
 const initialDb = []
 
 const Todo = () => {
-
+    const { register, formState: { errors } } = useForm();
     const [db, setDb] = useState(initialDb)
     //const [Equipo,setEquipo]=useState([])
     useEffect(() => {
@@ -36,13 +37,15 @@ const Todo = () => {
     const [nombrelista, setNombrelista] = useState("")
 
     return (
-        <div>
+        <div >
             <form>
 				<input type="text"
+                {...register("nombrelista", { required: true })}
                 onChange={(event) => {
                     setNombrelista(event.target.value)
                     }} 
                 />
+                {errors.nombrelista && <span>este campo es requerido</span>}
 				<button onClick={(e)=>{
                     e.preventDefault()
                     postData({"name":nombrelista})
