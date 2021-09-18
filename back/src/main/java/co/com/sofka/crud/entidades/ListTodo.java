@@ -1,12 +1,14 @@
 package co.com.sofka.crud.entidades;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Set;
 @Entity
 public class ListTodo {
     @Id
     @GeneratedValue
     private Long id;
+    @NotBlank(message = "El campo no puede estar vacio")
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

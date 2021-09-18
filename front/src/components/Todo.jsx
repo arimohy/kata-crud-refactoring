@@ -40,18 +40,21 @@ const Todo = () => {
         <div >
             <form>
 				<input type="text"
-                {...register("nombrelista", { required: true })}
+                placeholder='Recuerde que debe escribir algo para que se guarde'
                 onChange={(event) => {
                     setNombrelista(event.target.value)
                     }} 
-                />
-                {errors.nombrelista && <span>este campo es requerido</span>}
+                    required/>
 				<button onClick={(e)=>{
                     e.preventDefault()
-                    postData({"name":nombrelista})
+                    if(nombrelista.length>0)
+                        postData({"name":nombrelista})
                     //setDb(...db,nombrelista)
                     }
+
                     }>Nueva Lista</button>
+                    
+                        
 			</form>
             {db && db.map((el) => <StoreProvider> <TodoList key={el.id} el={el} setDb={setDb} db={db} /></StoreProvider>)}
     </div>
